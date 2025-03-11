@@ -1,0 +1,10 @@
+{
+  "name": "@repo/temperature-converter",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.ts"
+  }
+}
