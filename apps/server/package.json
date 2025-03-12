@@ -10,8 +10,10 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/temperature-converter": "workspace:*",
     "@fastify/cors": "^11.0.0",
+    "@fastify/swagger": "^9.4.2",
+    "@fastify/swagger-ui": "^5.2.2",
+    "@repo/temperature-converter": "workspace:*",
     "@repo/ui": "workspace:*",
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
