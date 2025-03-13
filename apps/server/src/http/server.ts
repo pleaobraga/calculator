@@ -7,7 +7,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { fastifyCors } from '@fastify/cors'
-import { converterTemperatureRoute } from './routes/converter-temperature.js'
+import { converterTemperatureRoute } from './routes/converter-temperature-route.js'
 import { fastifySwagger } from '@fastify/swagger'
 import { fastifySwaggerUi } from '@fastify/swagger-ui'
 
@@ -23,7 +23,7 @@ app.setSerializerCompiler(serializerCompiler)
 app.register(fastifySwagger, {
   openapi: {
     info: {
-      title: 'Temperature Converter',
+      title: 'Calculator',
       version: '1.0.0',
     },
   },
