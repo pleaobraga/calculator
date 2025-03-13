@@ -4,7 +4,7 @@ import { operationDivide } from '../use-case/operation-divide.ts'
 
 export const operationDivideRoute: FastifyPluginAsyncZod = async (app) => {
   app.post(
-    '/operation-divide',
+    '/v1/operation-divide',
     {
       schema: {
         tags: ['operation'],

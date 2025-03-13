@@ -5,7 +5,7 @@ import { TEMPERATURES } from '@repo/temperature-converter'
 
 export const converterTemperatureRoute: FastifyPluginAsyncZod = async (app) => {
   app.get(
-    '/convert-temperature',
+    '/v1/convert-temperature',
     {
       schema: {
         tags: ['temperature'],

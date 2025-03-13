@@ -4,7 +4,7 @@ import { operationMultiply } from '../use-case/operation-multiply.ts'
 
 export const operationMultiplyRoute: FastifyPluginAsyncZod = async (app) => {
   app.post(
-    '/operation-multiply',
+    '/v1/operation-multiply',
     {
       schema: {
         tags: ['operation'],
