@@ -1,7 +1,7 @@
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { convertTemperature } from '../use-case/convert-temperature.js'
-import { TEMPERATURES } from '../../types/temperatures.js'
+import { convertTemperature } from '../use-case/convert-temperature.ts'
+import { TEMPERATURES } from '@repo/temperature-converter'
 
 export const converterTemperatureRoute: FastifyPluginAsyncZod = async (app) => {
   app.get(

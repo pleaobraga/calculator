@@ -5,8 +5,8 @@ import {
   fahrenheitToKevin,
   kevinToCelsius,
   kevinToFahrenheit,
+  TEMPERATURES,
 } from '@repo/temperature-converter'
-import { TEMPERATURES } from '../../types/temperatures.js'
 
 type Props = {
   from: (typeof TEMPERATURES)[keyof typeof TEMPERATURES]
