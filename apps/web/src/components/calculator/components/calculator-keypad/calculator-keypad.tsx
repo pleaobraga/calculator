@@ -1,5 +1,4 @@
 import { twMerge } from 'tailwind-merge'
-import { CalculatorButton } from '../calculator-button'
 import {
   FaDivide,
   FaMinus,
@@ -8,7 +7,13 @@ import {
   FaEquals,
   FaTemperatureHigh,
 } from 'react-icons/fa6'
-import { ThemeChangeButton } from '../theme-change-button/theme-change-button'
+
+import { CalculatorButton } from '../button/calculator-button'
+import { ThemeChangeButton } from '../button/theme-change-button/theme-change-button'
+import { EnvChangeButton } from '../button/env-change-button'
+import { EqualButton } from '../button/equal-button'
+import { DeleteButton } from '../button/delete-button/delete-button'
+import { TemperatureButton } from '../button/temperature-button'
 
 export function CalculatorKeypad() {
   return (
@@ -17,16 +22,11 @@ export function CalculatorKeypad() {
         'w-full h-h-full py-12 px-10 bg-gray-100 grid grid-cols-4 gap-4 rounded-t-4xl'
       )}
     >
+      <EnvChangeButton onChangeEnv={() => {}} />
       <ThemeChangeButton />
-      <CalculatorButton
-        content={<FaTemperatureHigh />}
-        onClick={() => console.log('T')}
-      />
-      <CalculatorButton
-        content={<FaDivide />}
-        onClick={() => console.log('/')}
-        color="gray"
-      />
+
+      <TemperatureButton onClick={() => {}} />
+
       <CalculatorButton
         content={<FaXmark />}
         onClick={() => console.log('X')}
@@ -79,25 +79,23 @@ export function CalculatorKeypad() {
         onClick={() => console.log('T')}
       />
       <CalculatorButton
-        content={<FaEquals />}
-        onClick={() => console.log('T')}
-      />
-      <CalculatorButton
-        content=""
-        onClick={() => console.log('T')}
-      />
-      <CalculatorButton
-        content="0"
-        onClick={() => console.log('T')}
+        content={<FaDivide />}
+        onClick={() => console.log('/')}
+        color="gray"
       />
       <CalculatorButton
         content="."
         onClick={() => console.log('T')}
       />
+
       <CalculatorButton
-        content={<FaEquals />}
+        content="0"
         onClick={() => console.log('T')}
       />
+
+      <DeleteButton onClick={() => {}} />
+
+      <EqualButton onClick={() => {}} />
     </div>
   )
 }
