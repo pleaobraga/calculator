@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CalculatorButton } from './'
 
 const meta = {
-  title: 'Calculator Button',
+  title: 'Button/Calculator Button',
   component: CalculatorButton,
   parameters: {
     layout: 'centered',

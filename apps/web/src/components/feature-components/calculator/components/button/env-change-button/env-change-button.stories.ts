@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { EnvChangeButton } from '.'
 
 const meta = {
-  title: 'Environment Change Button',
+  title: 'Button/Environment Change Button',
   component: EnvChangeButton,
   parameters: {
     layout: 'centered',

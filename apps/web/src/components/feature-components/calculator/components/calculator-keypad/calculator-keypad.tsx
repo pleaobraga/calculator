@@ -1,12 +1,5 @@
 import { twMerge } from 'tailwind-merge'
-import {
-  FaDivide,
-  FaMinus,
-  FaPlus,
-  FaXmark,
-  FaEquals,
-  FaTemperatureHigh,
-} from 'react-icons/fa6'
+import { FaDivide, FaMinus, FaPlus, FaXmark } from 'react-icons/fa6'
 
 import { CalculatorButton } from '../button/calculator-button'
 import { ThemeChangeButton } from '../button/theme-change-button/theme-change-button'
@@ -19,7 +12,7 @@ export function CalculatorKeypad() {
   return (
     <div
       className={twMerge(
-        'w-full h-h-full py-12 px-10 bg-gray-100 grid grid-cols-4 gap-4 rounded-t-4xl'
+        'w-full h-full py-12 px-10 bg-gray-100 grid grid-cols-4 gap-4 rounded-t-4xl'
       )}
     >
       <EnvChangeButton onChangeEnv={() => {}} />

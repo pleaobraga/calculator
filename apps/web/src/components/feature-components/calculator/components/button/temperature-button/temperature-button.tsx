@@ -1,6 +1,6 @@
-import { FaEquals, FaTemperatureHigh } from 'react-icons/fa6'
+import { FaTemperatureHigh } from 'react-icons/fa6'
 import { CalculatorButton } from '../calculator-button'
-import { ICON_COLOR } from '../../../../../contants'
+import { ICON_COLOR } from '@/constants/index'
 
 type Props = {
   onClick: () => void

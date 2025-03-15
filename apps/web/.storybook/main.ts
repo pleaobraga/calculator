@@ -18,7 +18,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/experimental-addon-test'),
   ],
   framework: {
-    name: getAbsolutePath('@storybook/experimental-nextjs-vite'),
+    name: getAbsolutePath('@storybook/nextjs'),
     options: {},
   },
   staticDirs: ['../public'],

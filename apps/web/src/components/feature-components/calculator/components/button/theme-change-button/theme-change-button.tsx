@@ -1,7 +1,7 @@
 import { FaRegMoon, FaMoon } from 'react-icons/fa6'
 import { CalculatorButton } from '../calculator-button'
 import { useState } from 'react'
-import { ICON_COLOR } from '../../../../../contants'
+import { ICON_COLOR } from '@/constants/index'
 
 export function ThemeChangeButton() {
   const [isDarkMode, setIsDarkMode] = useState(false)
