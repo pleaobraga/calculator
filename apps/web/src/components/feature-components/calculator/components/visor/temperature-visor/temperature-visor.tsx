@@ -14,14 +14,17 @@ export function TemperatureVisor({
   response,
 }: Props) {
   return (
-    <div className="flex flex-col items-end justify-end gap-2">
+    <div className="flex flex-col items-end justify-end gap-4">
       <TemperatureDisplay
         onScaleChange={onChangeFrom}
-        value={value}
+        value={String(value)}
+        name="from"
       />
       <TemperatureDisplay
         onScaleChange={onChangeTo}
-        value={response ?? 'loading'}
+        value={response ? String(response) : 'loading'}
+        valueClassName="font-medium text-3xl"
+        name="to"
       />
     </div>
   )

@@ -8,15 +8,13 @@ import {
 import { ComponentProps } from 'react'
 import { TEMPERATURES } from '@repo/temperature-converter'
 
-type Props = ComponentProps<typeof Select> & {
-  label?: string // Add custom props if needed
-}
+export type Props = ComponentProps<typeof Select>
 
-export function TemperatureSelect({}: Props) {
+export function TemperatureSelect({ onValueChange, ...props }: Props) {
   return (
-    <Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Theme" />
+    <Select {...props}>
+      <SelectTrigger className="border-none shadow-none gap-1">
+        <SelectValue placeholder="Select a scale" />
       </SelectTrigger>
       <SelectContent>
         {Object.values(TEMPERATURES).map((temp) => {
@@ -24,6 +22,7 @@ export function TemperatureSelect({}: Props) {
             <SelectItem
               key={temp}
               value={temp}
+              onClick={() => onValueChange?.(temp)}
             >
               {temp}
             </SelectItem>
