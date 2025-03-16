@@ -85,8 +85,8 @@ export function useOperationCalculator() {
     }
 
     if (isFullHistory && shouldOverrideValue) {
-      setIsFullHistory(false)
       setHistory('')
+      setIsFullHistory(false)
     }
 
     setShouldOverrideValue(false)
@@ -100,9 +100,15 @@ export function useOperationCalculator() {
   }
 
   function deleteDigit() {
+    if (isFullHistory) {
+      setHistory('')
+      setIsFullHistory(false)
+    }
+
     setValues((state) => {
       const newState = [...state]
-      let newValue = String(newState[currentIndexValue])
+      const index = newState.length - 1
+      let newValue = String(newState[index])
 
       if (newValue.length === 1) {
         newValue = '0'
@@ -110,7 +116,7 @@ export function useOperationCalculator() {
         newValue = newValue.slice(0, -1)
       }
 
-      newState[currentIndexValue] = Number(newValue)
+      newState[index] = Number(newValue)
 
       return [...newState]
     })
