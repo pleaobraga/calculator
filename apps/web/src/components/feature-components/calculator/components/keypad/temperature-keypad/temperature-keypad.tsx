@@ -2,24 +2,18 @@ import { twMerge } from 'tailwind-merge'
 
 import { ActionsDigitsKeypad } from '../actions-digits-keypad'
 import { NumberDigitsKeypad } from '../number-digits-keypad'
-import { OperationDigitsKeypad } from '../operation-digits-keypad'
-import { Operator } from '@/types/index'
 
 type Props = {
   onClickNumberKeys: (digit: string) => void
   onDeleteDigit: () => void
-  onClickOperator: (operator: Operator) => void
-  onClickResult: () => void
   onClear: () => void
-  onToggleMode: () => void
   mode: 'temperature' | 'operation'
+  onToggleMode: () => void
 }
 
-export function OperationKeypad({
+export function TemperatureKeypad({
   onClickNumberKeys,
   onDeleteDigit,
-  onClickOperator,
-  onClickResult,
   onClear,
   onToggleMode,
   mode = 'operation',
@@ -37,12 +31,6 @@ export function OperationKeypad({
           onClear={onClear}
           onClickNumberKeys={onClickNumberKeys}
           onDeleteDigit={onDeleteDigit}
-        />
-      </div>
-      <div className="row-start-1 row-end-5 col-start-3 col-end-3">
-        <OperationDigitsKeypad
-          onClickOperator={onClickOperator}
-          onClickResult={onClickResult}
         />
       </div>
     </div>

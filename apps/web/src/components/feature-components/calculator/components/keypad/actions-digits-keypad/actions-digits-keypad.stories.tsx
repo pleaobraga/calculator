@@ -11,6 +11,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     mode: 'temperature',
+    onToggleMode: () => {},
   },
 } satisfies Meta<typeof ActionsDigitsKeypad>
 

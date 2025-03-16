@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { CalculatorKeypad } from '.'
 import { OperationKeypad } from '../operation-keypad'
+import { TemperatureKeypad } from '../temperature-keypad'
 
 const meta = {
   title: 'Keypad/Calculator Keypad',
@@ -27,6 +28,20 @@ export const WithOperationKeypad: Story = {
         onClickNumberKeys={() => {}}
         onClickOperator={() => {}}
         onDeleteDigit={() => {}}
+        onClear={() => {}}
+        onClickResult={() => {}}
+      />
+    ),
+  },
+}
+export const WithTemperatureKeypad: Story = {
+  args: {
+    children: (
+      <TemperatureKeypad
+        mode="temperature"
+        onClickNumberKeys={() => {}}
+        onDeleteDigit={() => {}}
+        onClear={() => {}}
       />
     ),
   },

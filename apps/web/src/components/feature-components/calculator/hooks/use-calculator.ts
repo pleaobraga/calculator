@@ -7,9 +7,15 @@ export function UseCalculator() {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isLocal, setIsLocal] = useState(true)
 
+  function onToggleMode() {
+    setMode((state) => {
+      return state === 'operation' ? 'temperature' : 'operation'
+    })
+  }
+
   return {
     mode,
-    setMode,
+    onToggleMode,
     isDarkMode,
     setIsDarkMode,
     isLocal,

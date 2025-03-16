@@ -3,11 +3,13 @@ import {
   TemperatureSelect,
   Props as TemperatureSelectProps,
 } from './components/temperature-select'
+import { TemperatureUnit } from '@/types/index'
 
 type Props = {
   value: string
-  onScaleChange: (scale: string) => void
+  onScaleChange: (scale: TemperatureUnit) => void
   valueClassName?: string
+  defaultValue: TemperatureUnit
 } & TemperatureSelectProps
 
 export function TemperatureDisplay({

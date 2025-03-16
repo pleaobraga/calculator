@@ -12,9 +12,17 @@ import { TEMPERATURES } from '@repo/temperature-converter'
 
 export type Props = ComponentProps<typeof Select>
 
-export function TemperatureSelect({ onValueChange, ...props }: Props) {
+export function TemperatureSelect({
+  onValueChange,
+  defaultValue,
+  ...props
+}: Props) {
   return (
-    <Select {...props}>
+    <Select
+      {...props}
+      defaultValue={defaultValue}
+      onValueChange={onValueChange}
+    >
       <SelectTrigger className="border-none shadow-none gap-1">
         <SelectValue placeholder="Select a scale" />
       </SelectTrigger>
@@ -24,7 +32,6 @@ export function TemperatureSelect({ onValueChange, ...props }: Props) {
             <SelectItem
               key={temp}
               value={temp}
-              onClick={() => onValueChange?.(temp)}
             >
               {temp}
             </SelectItem>

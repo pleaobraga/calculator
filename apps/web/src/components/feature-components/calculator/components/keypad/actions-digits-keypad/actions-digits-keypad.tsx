@@ -4,16 +4,20 @@ import { ModeButton } from '../../button/mode-button'
 
 type Props = {
   mode: 'temperature' | 'operation'
+  onToggleMode: () => void
 }
 
-export function ActionsDigitsKeypad({ mode = 'operation' }: Props) {
+export function ActionsDigitsKeypad({
+  mode = 'operation',
+  onToggleMode,
+}: Props) {
   return (
     <div className={'w-full h-full grid grid-cols-3 gap-4'}>
       <EnvChangeButton onChangeEnv={() => {}} />
       <ThemeChangeButton />
 
       <ModeButton
-        onClick={() => {}}
+        onClick={onToggleMode}
         mode={mode}
       />
     </div>

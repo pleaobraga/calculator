@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { OperationKeypad } from '.'
+import { TemperatureKeypad } from '.'
 
 const meta = {
-  title: 'Keypad/Operation Keypad',
-  component: OperationKeypad,
+  title: 'Keypad/Temperature Keypad',
+  component: TemperatureKeypad,
   parameters: {
     layout: 'centered',
   },
@@ -12,13 +12,10 @@ const meta = {
   args: {
     mode: 'temperature',
     onClickNumberKeys: () => {},
-    onClickOperator: () => {},
     onDeleteDigit: () => {},
-    onClickResult: () => {},
     onClear: () => {},
-    onToggleMode: () => {},
   },
-} satisfies Meta<typeof OperationKeypad>
+} satisfies Meta<typeof TemperatureKeypad>
 
 export default meta
 type Story = StoryObj<typeof meta>
