@@ -29,6 +29,7 @@ export function useOperationCalculator() {
 
   function updateVisorOnOperator(operator: Operator) {
     setHistory(`${values[0]} ${operator}`)
+    setIsFullHistory(false)
     if (currentIndexValue === 0) {
       setShouldOverrideValue(true)
       setCurrentIndexValue(1)
@@ -84,7 +85,7 @@ export function useOperationCalculator() {
       return
     }
 
-    if (isFullHistory && shouldOverrideValue) {
+    if (isFullHistory) {
       setHistory('')
       setIsFullHistory(false)
     }
