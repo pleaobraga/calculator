@@ -1,12 +1,18 @@
-import { CalculatorButton } from "../../button/calculator-button"
-import { DeleteButton } from "../../button/delete-button"
+import { CalculatorButton } from '../../button/calculator-button'
+import { CleanButton } from '../../button/clean-button'
+import { DeleteButton } from '../../button/delete-button'
 
 type Props = {
   onClickNumberKeys: (digit: string) => void
   onDeleteDigit: () => void
+  onClear: () => void
 }
 
-export function NumberDigitsKeypad({ onClickNumberKeys, onDeleteDigit }: Props) {
+export function NumberDigitsKeypad({
+  onClickNumberKeys,
+  onDeleteDigit,
+  onClear,
+}: Props) {
   return (
     <div className="w-full h-full bg-transparent grid grid-cols-3 gap-4">
       <CalculatorButton
@@ -47,10 +53,7 @@ export function NumberDigitsKeypad({ onClickNumberKeys, onDeleteDigit }: Props) 
         onClick={() => onClickNumberKeys('3')}
       />
 
-      <CalculatorButton
-        content="."
-        onClick={() => console.log('T')}
-      />
+      <CleanButton onClick={onClear} />
 
       <CalculatorButton
         content="0"

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { add, divide, multiply, subtract } from '@repo/operations'
 import { Operator } from '@/types/index'
 
@@ -10,9 +10,24 @@ export function useOperationCalculator() {
   const [operator, setOperator] = useState<Operator | undefined>(undefined)
   const [history, setHistory] = useState('')
   const [shouldOverrideValue, setShouldOverrideValue] = useState(false)
-  const [showResult, setShowResult] = useState(false)
+  const [isFullHistory, setIsFullHistory] = useState(false)
 
-  function updateVisor(operator: Operator) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClear()
+      }
+
+      if (e.key === 'Backspace') {
+        deleteDigit()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  function updateVisorOnOperator(operator: Operator) {
     setHistory(`${values[0]} ${operator}`)
     if (currentIndexValue === 0) {
       setShouldOverrideValue(true)
@@ -23,23 +38,14 @@ export function useOperationCalculator() {
 
   function updateOperator(operator: Operator) {
     setOperator(operator)
-    updateVisor(operator)
+    updateVisorOnOperator(operator)
   }
 
   function getHistory() {
-    if (values.length === 2 && operator) {
-      console.log(`history inside`, history)
-      return history
-    }
-
-    return ''
+    return history
   }
 
   function getMainLineVisor() {
-    if (showResult && values.length === 2) {
-      return getResult()
-    }
-
     if (!values[currentIndexValue]) return
 
     return String(values[currentIndexValue])
@@ -61,7 +67,8 @@ export function useOperationCalculator() {
       }
       case '/': {
         const result = divide(...values)
-        return String(result)
+
+        return String(result.toFixed(9))
       }
     }
   }
@@ -71,11 +78,16 @@ export function useOperationCalculator() {
 
     let currentValue = String(values[currentIndexValue])
 
+    currentValue = shouldOverrideValue ? digit : currentValue + digit
+
     if (currentValue && currentValue?.length > 6) {
       return
     }
 
-    currentValue = shouldOverrideValue ? digit : currentValue + digit
+    if (isFullHistory && shouldOverrideValue) {
+      setIsFullHistory(false)
+      setHistory('')
+    }
 
     setShouldOverrideValue(false)
 
@@ -105,15 +117,30 @@ export function useOperationCalculator() {
   }
 
   function updateVisorOnResult(result: string) {
-    setHistory(`${values[0]} ${operator} ${values[1]}`)
+    const [value1, value2] = values
+    setHistory(`${value1} ${operator} ${value2} =`)
+    setIsFullHistory(true)
     setCurrentIndexValue(0)
     setValues([Number(result)])
+    setShouldOverrideValue(true)
   }
 
   function calculateResult() {
-    setShowResult(true)
-    const result = getResult()
-    updateVisorOnResult(result!)
+    if (values.length === 2 && operator) {
+      const result = getResult()
+      if (result) {
+        updateVisorOnResult(result)
+      }
+    }
+  }
+
+  function onClear() {
+    setValues([0])
+    setCurrentIndexValue(0)
+    setHistory('')
+    setIsFullHistory(false)
+    setShouldOverrideValue(false)
+    setOperator(undefined)
   }
 
   return {
@@ -125,5 +152,6 @@ export function useOperationCalculator() {
     getMainLineVisor,
     updateOperator,
     calculateResult,
+    onClear,
   }
 }

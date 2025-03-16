@@ -1,15 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Calculator } from '.'
+import { CleanButton } from '.'
 
 const meta = {
-  title: 'Calculator',
-  component: Calculator,
+  title: 'Button/Clean Button',
+  component: CleanButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Calculator>
+  args: { onClick: () => {} },
+} satisfies Meta<typeof CleanButton>
 
 export default meta
 type Story = StoryObj<typeof meta>

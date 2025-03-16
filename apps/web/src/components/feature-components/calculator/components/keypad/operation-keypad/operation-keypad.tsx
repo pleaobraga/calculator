@@ -10,6 +10,7 @@ type Props = {
   onDeleteDigit: () => void
   onClickOperator: (operator: Operator) => void
   onClickResult: () => void
+  onClear: () => void
   mode: 'temperature' | 'operation'
 }
 
@@ -18,6 +19,7 @@ export function OperationKeypad({
   onDeleteDigit,
   onClickOperator,
   onClickResult,
+  onClear,
   mode = 'operation',
 }: Props) {
   return (
@@ -27,6 +29,7 @@ export function OperationKeypad({
       </div>
       <div className="row-start-2 row-end-5 col-start-1 col-end-3">
         <NumberDigitsKeypad
+          onClear={onClear}
           onClickNumberKeys={onClickNumberKeys}
           onDeleteDigit={onDeleteDigit}
         />
