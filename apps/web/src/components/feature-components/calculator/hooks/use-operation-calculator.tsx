@@ -10,6 +10,7 @@ export function useOperationCalculator() {
   const [operator, setOperator] = useState<Operator | undefined>(undefined)
   const [history, setHistory] = useState('')
   const [shouldOverrideValue, setShouldOverrideValue] = useState(false)
+  const [showResult, setShowResult] = useState(false)
 
   function updateVisor(operator: Operator) {
     setHistory(`${values[0]} ${operator}`)
@@ -35,6 +36,10 @@ export function useOperationCalculator() {
   }
 
   function getMainLineVisor() {
+    if (showResult && values.length === 2) {
+      return getResult()
+    }
+
     if (!values[currentIndexValue]) return
 
     return String(values[currentIndexValue])
@@ -99,6 +104,18 @@ export function useOperationCalculator() {
     })
   }
 
+  function updateVisorOnResult(result: string) {
+    setHistory(`${values[0]} ${operator} ${values[1]}`)
+    setCurrentIndexValue(0)
+    setValues([Number(result)])
+  }
+
+  function calculateResult() {
+    setShowResult(true)
+    const result = getResult()
+    updateVisorOnResult(result!)
+  }
+
   return {
     getHistory,
     getResult,
@@ -107,5 +124,6 @@ export function useOperationCalculator() {
     deleteDigit,
     getMainLineVisor,
     updateOperator,
+    calculateResult,
   }
 }

@@ -11,6 +11,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     onClickOperator: () => {},
+    onClickResult: () => {},
   },
 } satisfies Meta<typeof OperationDigitsKeypad>
 

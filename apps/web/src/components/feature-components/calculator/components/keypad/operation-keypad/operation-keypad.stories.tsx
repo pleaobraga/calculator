@@ -14,6 +14,7 @@ const meta = {
     onClickNumberKeys: () => {},
     onClickOperator: () => {},
     onDeleteDigit: () => {},
+    onClickResult: () => {},
   },
 } satisfies Meta<typeof OperationKeypad>
 

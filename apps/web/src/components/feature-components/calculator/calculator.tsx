@@ -17,6 +17,7 @@ export function Calculator() {
     getMainLineVisor,
     deleteDigit,
     updateOperator,
+    calculateResult,
   } = useOperationCalculator()
 
   console.log(`getHistory`, getHistory())
@@ -36,6 +37,7 @@ export function Calculator() {
           onClickNumberKeys={updateValues}
           onDeleteDigit={deleteDigit}
           onClickOperator={updateOperator}
+          onClickResult={calculateResult}
           mode={mode}
         />
       </CalculatorKeypad>
