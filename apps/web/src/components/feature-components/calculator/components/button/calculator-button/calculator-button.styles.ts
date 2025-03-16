@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 export const styles = tv({
   base: twMerge(
     'rounded-full size-16 text-2xl/loose text-black cursor-pointer font-semibold',
-    'flex justify-center items-center',
+    'flex justify-center items-center select-none',
     'hover:opacity-90 active:opacity-80'
   ),
   variants: {

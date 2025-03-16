@@ -17,12 +17,12 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     history: '120 + 12',
-    result: '132',
+    value: '132',
   },
 }
 
 export const WithoutHistory: Story = {
   args: {
-    result: '132',
+    value: '132',
   },
 }

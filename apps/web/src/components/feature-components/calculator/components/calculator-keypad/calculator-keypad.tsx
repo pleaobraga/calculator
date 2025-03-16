@@ -8,7 +8,17 @@ import { EqualButton } from '../button/equal-button'
 import { DeleteButton } from '../button/delete-button/delete-button'
 import { TemperatureButton } from '../button/temperature-button'
 
-export function CalculatorKeypad() {
+type Props = {
+  onClickNumberKeys: (digit: string) => void
+  onDeleteDigit: () => void
+  onClickOperator: (operator: string) => void
+}
+
+export function CalculatorKeypad({
+  onClickNumberKeys,
+  onDeleteDigit,
+  onClickOperator,
+}: Props) {
   return (
     <div
       className={twMerge(
@@ -22,58 +32,58 @@ export function CalculatorKeypad() {
 
       <CalculatorButton
         content={<FaXmark />}
-        onClick={() => console.log('X')}
+        onClick={() => onClickOperator('*')}
         color="gray"
       />
       <CalculatorButton
         content="7"
-        onClick={() => console.log('7')}
+        onClick={() => onClickNumberKeys('7')}
       />
       <CalculatorButton
         content="8"
-        onClick={() => console.log('8')}
+        onClick={() => onClickNumberKeys('8')}
       />
       <CalculatorButton
         content="9"
-        onClick={() => console.log('9')}
+        onClick={() => onClickNumberKeys('9')}
       />
       <CalculatorButton
         content={<FaMinus />}
-        onClick={() => console.log('-')}
+        onClick={() => onClickOperator('-')}
         color="gray"
       />
       <CalculatorButton
         content="4"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('4')}
       />
       <CalculatorButton
         content="5"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('5')}
       />
       <CalculatorButton
         content="6"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('6')}
       />
       <CalculatorButton
         content={<FaPlus />}
-        onClick={() => console.log('T')}
+        onClick={() => onClickOperator('+')}
         color="gray"
       />
       <CalculatorButton
         content="1"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('1')}
       />
       <CalculatorButton
         content="2"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('2')}
       />
       <CalculatorButton
         content="3"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('3')}
       />
       <CalculatorButton
         content={<FaDivide />}
-        onClick={() => console.log('/')}
+        onClick={() => onClickOperator('/')}
         color="gray"
       />
       <CalculatorButton
@@ -83,10 +93,10 @@ export function CalculatorKeypad() {
 
       <CalculatorButton
         content="0"
-        onClick={() => console.log('T')}
+        onClick={() => onClickNumberKeys('0')}
       />
 
-      <DeleteButton onClick={() => {}} />
+      <DeleteButton onClick={onDeleteDigit} />
 
       <EqualButton onClick={() => {}} />
     </div>
