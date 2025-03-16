@@ -20,6 +20,21 @@ export function useTemperatureCalculator() {
     getConvertedValue()
   }, [value, from, to])
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClear()
+      }
+
+      if (e.key === 'Backspace' || e.key === 'Escape') {
+        deleteDigit()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
   function onChangeFrom(unit: TemperatureUnit) {
     setFrom(unit)
   }
@@ -28,7 +43,10 @@ export function useTemperatureCalculator() {
     setTo(unit)
   }
 
-  function onClear() {}
+  function onClear() {
+    setValue(0)
+    setTo(from)
+  }
 
   function getConvertedValue() {
     if (from === to) {
@@ -65,7 +83,9 @@ export function useTemperatureCalculator() {
       throw new Error(`Conversion from ${from} to ${to} is not supported.`)
     }
 
-    setConverted(converter.function(value))
+    const convertedValue = converter.function(value)
+
+    setConverted(Number(convertedValue?.toFixed(5)))
   }
 
   function updateValue(digit: string) {
