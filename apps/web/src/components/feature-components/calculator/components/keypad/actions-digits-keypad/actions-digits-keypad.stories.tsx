@@ -1,16 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TemperatureButton } from '.'
+import { ActionsDigitsKeypad } from '.'
 
 const meta = {
-  title: 'Button/Temperature Button',
-  component: TemperatureButton,
+  title: 'Keypad/Digits/Actions Keypad',
+  component: ActionsDigitsKeypad,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  args: { onClick: () => {} },
-} satisfies Meta<typeof TemperatureButton>
+  args: {
+    mode: 'temperature',
+  },
+} satisfies Meta<typeof ActionsDigitsKeypad>
 
 export default meta
 type Story = StoryObj<typeof meta>

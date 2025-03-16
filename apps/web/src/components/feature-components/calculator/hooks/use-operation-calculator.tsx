@@ -1,30 +1,34 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-type Operator = '+' | '-' | '/' | '*'
-
-type Props = {
-  showResult: boolean
-}
+import { useState } from 'react'
+import { add, divide, multiply, subtract } from '@repo/operations'
+import { Operator } from '@/types/index'
 
 export function useOperationCalculator() {
   const [values, setValues] = useState<number[]>([0])
   const [currentIndexValue, setCurrentIndexValue] = useState(0)
   const [operator, setOperator] = useState<Operator | undefined>(undefined)
   const [history, setHistory] = useState('')
+  const [shouldOverrideValue, setShouldOverrideValue] = useState(false)
 
-  useEffect(() => {
-    if (operator) {
-      setHistory(`${values[0]} ${operator}`)
-      setValues((state) => [...state, state[0] ?? 0])
+  function updateVisor(operator: Operator) {
+    setHistory(`${values[0]} ${operator}`)
+    if (currentIndexValue === 0) {
+      setShouldOverrideValue(true)
       setCurrentIndexValue(1)
+      setValues((state) => [...state, state[0] ?? 0])
     }
-  }, [operator])
+  }
+
+  function updateOperator(operator: Operator) {
+    setOperator(operator)
+    updateVisor(operator)
+  }
 
   function getHistory() {
     if (values.length === 2 && operator) {
-      return `${values[0]} ${operator} ${values[1]}`
+      console.log(`history inside`, history)
+      return history
     }
 
     return ''
@@ -39,19 +43,19 @@ export function useOperationCalculator() {
   function getResult() {
     switch (operator) {
       case '*': {
-        const result = Number(values[0]) * Number(values[1])
+        const result = multiply(...values)
         return String(result)
       }
       case '+': {
-        const result = Number(values[0]) + Number(values[1])
+        const result = add(...values)
         return String(result)
       }
       case '-': {
-        const result = Number(values[0]) - Number(values[1])
+        const result = subtract(...values)
         return String(result)
       }
       case '/': {
-        const result = Number(values[0]) / Number(values[1])
+        const result = divide(...values)
         return String(result)
       }
     }
@@ -66,7 +70,9 @@ export function useOperationCalculator() {
       return
     }
 
-    currentValue += digit
+    currentValue = shouldOverrideValue ? digit : currentValue + digit
+
+    setShouldOverrideValue(false)
 
     setValues((state) => {
       const newState = [...state]
@@ -91,10 +97,6 @@ export function useOperationCalculator() {
 
       return [...newState]
     })
-  }
-
-  function updateOperator(operator: Operator) {
-    setOperator(operator)
   }
 
   return {
