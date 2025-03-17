@@ -1,17 +1,16 @@
 'use client'
 
-import { Dispatch, SetStateAction } from 'react'
 import { CalculatorKeypad } from '../keypad/calculator-keypad'
 import { CalculatorVisor } from '../visor/calculator-visor'
 import { TemperatureVisor } from '../visor/temperature-visor'
 import { TemperatureKeypad } from '../keypad/temperature-keypad'
-import { useTemperatureCalculator } from './use-temperature-calculator'
+import { useTemperatureCalculator } from './hooks/use-temperature-calculator'
 
 type Props = {
   isDarkMode: boolean
   isLocal: boolean
   mode: 'temperature' | 'operation'
-  setIsLocal: Dispatch<SetStateAction<boolean>>
+  onToggleLocal: () => void
   onToggleMode: () => void
   toggleDakMode: () => void
 }
@@ -20,7 +19,9 @@ export function TemperatureCalculator({
   mode,
   onToggleMode,
   toggleDakMode,
+  onToggleLocal,
   isDarkMode,
+  isLocal,
 }: Props) {
   const {
     converted,
@@ -32,7 +33,8 @@ export function TemperatureCalculator({
     updateValue,
     from,
     to,
-  } = useTemperatureCalculator()
+    isFetching,
+  } = useTemperatureCalculator({ isLocal })
 
   return (
     <div className="w-full h-full">
@@ -44,6 +46,7 @@ export function TemperatureCalculator({
           response={converted}
           defaultValueFrom={from}
           defaultValueTo={to}
+          isFetching={isFetching}
         />
       </CalculatorVisor>
       <CalculatorKeypad>
@@ -55,6 +58,8 @@ export function TemperatureCalculator({
           onToggleMode={onToggleMode}
           toggleDakMode={toggleDakMode}
           isDarkMode={isDarkMode}
+          isLocal={isLocal}
+          onToggleLocal={onToggleLocal}
         />
       </CalculatorKeypad>
     </div>

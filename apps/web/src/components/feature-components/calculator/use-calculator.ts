@@ -22,12 +22,16 @@ export function UseCalculator() {
     setIsDarkMode(!hasDarkMode)
   }
 
+  function onToggleLocal() {
+    setIsLocal((state) => !state)
+  }
+
   return {
     mode,
     onToggleMode,
     isDarkMode,
     toggleDakMode,
     isLocal,
-    setIsLocal,
+    onToggleLocal,
   }
 }

@@ -5,14 +5,14 @@ import { CalculatorKeypad } from '../../components/keypad/calculator-keypad'
 import { OperationKeypad } from '../../components/keypad/operation-keypad'
 import { CalculatorVisor } from '../../components/visor/calculator-visor'
 import { OperationVisor } from '../../components/visor/operation-visor'
-import { useOperationCalculator } from './use-operation-calculator'
+import { useOperationCalculator } from './hooks/use-operation-calculator'
 
 type Props = {
   isDarkMode: boolean
   isLocal: boolean
   mode: 'temperature' | 'operation'
   toggleDakMode: () => void
-  setIsLocal: Dispatch<SetStateAction<boolean>>
+  onToggleLocal: () => void
   onToggleMode: () => void
 }
 
@@ -21,6 +21,7 @@ export function OperationCalculator({
   onToggleMode,
   toggleDakMode,
   isDarkMode,
+  onToggleLocal,
 }: Props) {
   const {
     getHistory,
@@ -51,6 +52,7 @@ export function OperationCalculator({
           onToggleMode={onToggleMode}
           toggleDakMode={toggleDakMode}
           isDarkMode={isDarkMode}
+          onToggleLocal={onToggleLocal}
         />
       </CalculatorKeypad>
     </div>

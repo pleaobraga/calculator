@@ -14,6 +14,8 @@ const meta = {
     onToggleMode: () => {},
     isDarkMode: true,
     toggleDakMode: () => {},
+    isLocal: true,
+    onToggleLocal: () => {},
   },
 } satisfies Meta<typeof ActionsDigitsKeypad>
 

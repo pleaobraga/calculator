@@ -10,7 +10,9 @@ type Props = {
   mode: 'temperature' | 'operation'
   onToggleMode: () => void
   toggleDakMode: () => void
+  onToggleLocal: () => void
   isDarkMode: boolean
+  isLocal: boolean
 }
 
 export function TemperatureKeypad({
@@ -19,7 +21,9 @@ export function TemperatureKeypad({
   onClear,
   onToggleMode,
   toggleDakMode,
+  onToggleLocal,
   isDarkMode,
+  isLocal,
   mode = 'operation',
 }: Props) {
   return (
@@ -30,6 +34,8 @@ export function TemperatureKeypad({
           onToggleMode={onToggleMode}
           toggleDakMode={toggleDakMode}
           isDarkMode={isDarkMode}
+          onToggleLocal={onToggleLocal}
+          isLocal={isLocal}
         />
       </div>
       <div className="row-start-2 row-end-5 col-start-1 col-end-3">

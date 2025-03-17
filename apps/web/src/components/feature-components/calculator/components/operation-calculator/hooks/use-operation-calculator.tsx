@@ -3,14 +3,21 @@
 import { useEffect, useState } from 'react'
 import { add, divide, multiply, subtract } from '@repo/operations'
 import { Operator } from '@/types/index'
+import { useOperationCalculatorAPI } from './use-operation-calculator-api'
 
-export function useOperationCalculator() {
+type Props = {
+  isLocal?: boolean
+}
+
+export function useOperationCalculator({ isLocal = true }: Props) {
   const [values, setValues] = useState<number[]>([0])
   const [currentIndexValue, setCurrentIndexValue] = useState(0)
   const [operator, setOperator] = useState<Operator | undefined>(undefined)
   const [history, setHistory] = useState('')
   const [shouldOverrideValue, setShouldOverrideValue] = useState(false)
   const [isFullHistory, setIsFullHistory] = useState(false)
+
+  const { calculateAdd } = useOperationCalculatorAPI({ values })
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -55,7 +62,7 @@ export function useOperationCalculator() {
   function getResult() {
     switch (operator) {
       case '*': {
-        const result = multiply(...values)
+        const result = isLocal ? multiply(...values) : calculateAdd()
         return String(result)
       }
       case '+': {

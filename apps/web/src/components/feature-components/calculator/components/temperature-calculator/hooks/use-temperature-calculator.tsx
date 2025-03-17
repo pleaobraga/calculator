@@ -9,12 +9,29 @@ import {
   kevinToFahrenheit,
   TEMPERATURES,
 } from '@repo/temperature-converter'
+import { useTemperatureCalculatorAPI } from './use-temperature-calculator-api'
 
-export function useTemperatureCalculator() {
+type Props = {
+  isLocal?: boolean
+}
+
+export function useTemperatureCalculator({ isLocal = true }: Props) {
   const [from, setFrom] = useState<TemperatureUnit>('celsius')
   const [to, setTo] = useState<TemperatureUnit>('celsius')
   const [value, setValue] = useState(0)
   const [converted, setConverted] = useState<null | number>(0)
+
+  const { data, error, isFetching, refetch } = useTemperatureCalculatorAPI({
+    from,
+    to,
+    value: String(value),
+  })
+
+  useEffect(() => {
+    if (!error) {
+      setConverted(data?.value)
+    }
+  }, [data])
 
   useEffect(() => {
     getConvertedValue()
@@ -45,15 +62,9 @@ export function useTemperatureCalculator() {
 
   function onClear() {
     setValue(0)
-    setTo(from)
   }
 
-  function getConvertedValue() {
-    if (from === to) {
-      setConverted(value)
-      return
-    }
-
+  function getResultLocally() {
     const converterTemperatureMap = {
       [`${TEMPERATURES.CELSIUS}To${TEMPERATURES.FAHRENHEIT}`]: {
         function: celsiusToFahrenheit,
@@ -86,6 +97,20 @@ export function useTemperatureCalculator() {
     const convertedValue = converter.function(value)
 
     setConverted(Number(convertedValue?.toFixed(5)))
+  }
+
+  function getConvertedValue() {
+    if (from === to) {
+      setConverted(value)
+      return
+    }
+
+    if (isLocal) {
+      getResultLocally()
+      return
+    }
+
+    refetch()
   }
 
   function updateValue(digit: string) {
@@ -126,5 +151,6 @@ export function useTemperatureCalculator() {
     deleteDigit,
     from,
     to,
+    isFetching,
   }
 }

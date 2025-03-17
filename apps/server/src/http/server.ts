@@ -44,10 +44,12 @@ app.register(operationSubtractRoute)
 app.register(operationDivideRoute)
 app.register(operationMultiplyRoute)
 
-app
-  .listen({
-    port: 3333,
-  })
-  .then(() => {
-    console.log('HTTP server running!!')
-  })
+const PORT = process.env.PORT ?? 3001
+
+app.listen({ port: Number(PORT), host: '0.0.0.0' }, (err, address) => {
+  if (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+  console.log(`🚀 Server is running at ${address}`)
+})

@@ -1,7 +1,17 @@
+import { Calculator } from '@/components/feature-components/calculator'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Calculator',
+  description: 'Calculator that can perform simple operations',
+}
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="font-bold text-4xl m-10">Calculator</h1>
+    <div className=" flex justify-center items-center w-full h-[100vh]">
+      <div className="max-w-[800px]">
+        <Calculator />
+      </div>
     </div>
   )
 }

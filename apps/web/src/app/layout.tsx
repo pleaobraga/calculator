@@ -1,5 +1,8 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { Roboto } from 'next/font/google'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 import './globals.css'
 
 const roboto = Roboto({
@@ -8,10 +11,7 @@ const roboto = Roboto({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: 'Calculator',
-  description: 'Calculator that can perform simple operations',
-}
+const queryClient = new QueryClient()
 
 export default function RootLayout({
   children,
@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <QueryClientProvider client={queryClient}>
+        <body className={roboto.className}>{children}</body>
+      </QueryClientProvider>
     </html>
   )
 }

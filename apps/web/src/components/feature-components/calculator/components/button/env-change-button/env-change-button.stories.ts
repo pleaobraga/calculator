@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  args: { onChangeEnv: () => {} },
+  args: { isEnvLocal: true, onChangeEnv: () => {} },
 } satisfies Meta<typeof EnvChangeButton>
 
 export default meta

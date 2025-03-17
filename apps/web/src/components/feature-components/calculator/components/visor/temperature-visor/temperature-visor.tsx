@@ -8,6 +8,7 @@ type Props = {
   response?: number | null
   defaultValueTo: TemperatureUnit
   defaultValueFrom: TemperatureUnit
+  isFetching: boolean
 }
 
 export function TemperatureVisor({
@@ -17,6 +18,7 @@ export function TemperatureVisor({
   response,
   defaultValueFrom,
   defaultValueTo,
+  isFetching,
 }: Props) {
   return (
     <div className="flex flex-col items-end justify-end gap-4">
@@ -28,7 +30,7 @@ export function TemperatureVisor({
       />
       <TemperatureDisplay
         onScaleChange={onChangeTo}
-        value={response || response === 0 ? String(response) : 'loading'}
+        value={isFetching ? 'loading' : String(response)}
         valueClassName="font-medium text-3xl"
         name="to"
         defaultValue={defaultValueTo}
