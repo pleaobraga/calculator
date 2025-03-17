@@ -7,11 +7,13 @@ import { Operator } from '@/types/index'
 type Props = {
   onClickOperator: (operator: Operator) => void
   onClickResult: () => void
+  isLoading: boolean
 }
 
 export function OperationDigitsKeypad({
   onClickOperator,
   onClickResult,
+  isLoading,
 }: Props) {
   return (
     <div className={'w-full h-full grid grid-cols-1 gap-4'}>
@@ -39,7 +41,10 @@ export function OperationDigitsKeypad({
         color="gray"
       />
 
-      <EqualButton onClick={onClickResult} />
+      <EqualButton
+        disabled={isLoading}
+        onClick={onClickResult}
+      />
     </div>
   )
 }

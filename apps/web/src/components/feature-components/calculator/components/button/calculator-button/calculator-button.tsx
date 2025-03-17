@@ -8,6 +8,7 @@ type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   content: React.ReactNode
   color?: 'white' | 'gray'
+  disabled?: boolean
 }
 
 export function CalculatorButton({
@@ -15,12 +16,14 @@ export function CalculatorButton({
   onClick,
   content,
   color = 'white',
+  disabled,
 }: Props) {
   return (
     <button
-      className={styles({ color, class: className })}
+      className={styles({ color, disabled, class: className })}
       onClick={(e) => onClick(e)}
       type="button"
+      disabled={disabled}
     >
       {content}
     </button>

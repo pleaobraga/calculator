@@ -17,6 +17,7 @@ type Props = {
   mode: 'temperature' | 'operation'
   isDarkMode: boolean
   isLocal?: boolean
+  isLoading?: boolean
 }
 
 export function OperationKeypad({
@@ -31,6 +32,7 @@ export function OperationKeypad({
   isDarkMode,
   isLocal = true,
   mode = 'operation',
+  isLoading = false,
 }: Props) {
   return (
     <div className={twMerge('w-full h-full grid gap-4')}>
@@ -55,6 +57,7 @@ export function OperationKeypad({
         <OperationDigitsKeypad
           onClickOperator={onClickOperator}
           onClickResult={onClickResult}
+          isLoading={isLoading}
         />
       </div>
     </div>

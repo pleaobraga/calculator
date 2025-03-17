@@ -19,6 +19,9 @@ export const styles = tv({
         'dark:bg-gray-700 dark:active:dark:bg-gray-700 dark:hover:bg-gray-600'
       ),
     },
+    disabled: {
+      true: 'opacity-10',
+    },
   },
   defaultVariants: {
     color: 'white',

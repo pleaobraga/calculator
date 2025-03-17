@@ -22,6 +22,7 @@ export function OperationCalculator({
   toggleDakMode,
   isDarkMode,
   onToggleLocal,
+  isLocal,
 }: Props) {
   const {
     getHistory,
@@ -31,7 +32,8 @@ export function OperationCalculator({
     updateOperator,
     calculateResult,
     onClear,
-  } = useOperationCalculator()
+    isLoading,
+  } = useOperationCalculator({ isLocal })
 
   return (
     <div className="w-full h-full">
@@ -53,6 +55,8 @@ export function OperationCalculator({
           toggleDakMode={toggleDakMode}
           isDarkMode={isDarkMode}
           onToggleLocal={onToggleLocal}
+          isLocal={isLocal}
+          isLoading={isLoading}
         />
       </CalculatorKeypad>
     </div>

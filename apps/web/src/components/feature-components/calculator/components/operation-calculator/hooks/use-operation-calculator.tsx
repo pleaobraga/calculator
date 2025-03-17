@@ -17,7 +17,16 @@ export function useOperationCalculator({ isLocal = true }: Props) {
   const [shouldOverrideValue, setShouldOverrideValue] = useState(false)
   const [isFullHistory, setIsFullHistory] = useState(false)
 
-  const { calculateAdd } = useOperationCalculatorAPI({ values })
+  const {
+    calculateAdd,
+    calculateDivision,
+    calculateMultiply,
+    calculateSubtraction,
+    isLoading,
+  } = useOperationCalculatorAPI({
+    values,
+    onGetResult,
+  })
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -59,10 +68,31 @@ export function useOperationCalculator({ isLocal = true }: Props) {
     return String(values[currentIndexValue])
   }
 
-  function getResult() {
+  function getResultServer() {
     switch (operator) {
       case '*': {
-        const result = isLocal ? multiply(...values) : calculateAdd()
+        calculateMultiply()
+        return
+      }
+      case '+': {
+        calculateAdd()
+        return
+      }
+      case '-': {
+        calculateSubtraction()
+        return
+      }
+      case '/': {
+        calculateDivision()
+        return
+      }
+    }
+  }
+
+  function getResultLocally() {
+    switch (operator) {
+      case '*': {
+        const result = multiply(...values)
         return String(result)
       }
       case '+': {
@@ -139,12 +169,21 @@ export function useOperationCalculator({ isLocal = true }: Props) {
     setShouldOverrideValue(true)
   }
 
+  function onGetResult(result?: string) {
+    if (result) {
+      updateVisorOnResult(result)
+    }
+  }
+
   function calculateResult() {
     if (values.length === 2 && operator) {
-      const result = getResult()
-      if (result) {
-        updateVisorOnResult(result)
+      if (!isLocal) {
+        getResultServer()
+        return
       }
+
+      const result = getResultLocally()
+      onGetResult(result)
     }
   }
 
@@ -159,7 +198,6 @@ export function useOperationCalculator({ isLocal = true }: Props) {
 
   return {
     getHistory,
-    getResult,
     updateValues,
     values,
     deleteDigit,
@@ -167,5 +205,6 @@ export function useOperationCalculator({ isLocal = true }: Props) {
     updateOperator,
     calculateResult,
     onClear,
+    isLoading,
   }
 }
