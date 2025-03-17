@@ -15,7 +15,7 @@ export function Calculator() {
   } = UseCalculator()
 
   return (
-    <div className="w-full dark:bg-gray-900">
+    <div className="w-full dark:bg-gray-900 rounded-t-xl">
       {mode === 'operation' && (
         <OperationCalculator
           isDarkMode={isDarkMode}

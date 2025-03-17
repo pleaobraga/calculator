@@ -5,7 +5,5 @@ type Props = {
 }
 
 export function CalculatorVisor({ children }: Props) {
-  return (
-    <div className="w-full h-full py-12 px-10 bg-transparent">{children}</div>
-  )
+  return <div className="w-full h-full p-10 bg-transparent">{children}</div>
 }
