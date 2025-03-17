@@ -1,21 +1,23 @@
 import { FaRegMoon, FaMoon } from 'react-icons/fa6'
 import { CalculatorButton } from '../calculator-button'
-import { useState } from 'react'
 import { ICON_COLOR } from '@/constants/index'
 
-export function ThemeChangeButton() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+type Props = {
+  toggleDakMode: () => void
+  isDarkMode: boolean
+}
 
+export function ThemeChangeButton({ toggleDakMode, isDarkMode }: Props) {
   return (
     <CalculatorButton
       content={
         isDarkMode ? (
-          <FaRegMoon color={ICON_COLOR} />
-        ) : (
           <FaMoon color={ICON_COLOR} />
+        ) : (
+          <FaRegMoon color={ICON_COLOR} />
         )
       }
-      onClick={() => setIsDarkMode((state) => !state)}
+      onClick={toggleDakMode}
     />
   )
 }

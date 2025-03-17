@@ -5,16 +5,20 @@ import { ModeButton } from '../../button/mode-button'
 type Props = {
   mode: 'temperature' | 'operation'
   onToggleMode: () => void
+  toggleDakMode: () => void
+  isDarkMode: boolean
 }
 
 export function ActionsDigitsKeypad({
   mode = 'operation',
   onToggleMode,
+  toggleDakMode,
+  isDarkMode,
 }: Props) {
   return (
     <div className={'w-full h-full grid grid-cols-3 gap-4'}>
       <EnvChangeButton onChangeEnv={() => {}} />
-      <ThemeChangeButton />
+      <ThemeChangeButton toggleDakMode={toggleDakMode} isDarkMode={isDarkMode} />
 
       <ModeButton
         onClick={onToggleMode}

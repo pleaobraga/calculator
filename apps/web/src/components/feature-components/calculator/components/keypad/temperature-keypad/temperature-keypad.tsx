@@ -9,6 +9,8 @@ type Props = {
   onClear: () => void
   mode: 'temperature' | 'operation'
   onToggleMode: () => void
+  toggleDakMode: () => void
+  isDarkMode: boolean
 }
 
 export function TemperatureKeypad({
@@ -16,6 +18,8 @@ export function TemperatureKeypad({
   onDeleteDigit,
   onClear,
   onToggleMode,
+  toggleDakMode,
+  isDarkMode,
   mode = 'operation',
 }: Props) {
   return (
@@ -24,6 +28,8 @@ export function TemperatureKeypad({
         <ActionsDigitsKeypad
           mode={mode}
           onToggleMode={onToggleMode}
+          toggleDakMode={toggleDakMode}
+          isDarkMode={isDarkMode}
         />
       </div>
       <div className="row-start-2 row-end-5 col-start-1 col-end-3">

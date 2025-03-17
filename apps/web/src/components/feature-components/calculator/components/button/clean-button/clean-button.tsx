@@ -7,7 +7,7 @@ type Props = {
 export function CleanButton({ onClick }: Props) {
   return (
     <CalculatorButton
-      className="text-pink-600"
+      className="text-pink-600 dark:text-pink-600"
       content="AC"
       onClick={onClick}
     />

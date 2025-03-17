@@ -13,11 +13,20 @@ export function UseCalculator() {
     })
   }
 
+  function toggleDakMode() {
+    const html = document.querySelector('html')
+
+    const hasDarkMode = html?.classList.contains('dark')
+
+    html?.classList.toggle('dark')
+    setIsDarkMode(!hasDarkMode)
+  }
+
   return {
     mode,
     onToggleMode,
     isDarkMode,
-    setIsDarkMode,
+    toggleDakMode,
     isLocal,
     setIsLocal,
   }

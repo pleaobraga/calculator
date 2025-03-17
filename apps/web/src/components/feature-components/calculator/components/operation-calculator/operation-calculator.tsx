@@ -11,12 +11,17 @@ type Props = {
   isDarkMode: boolean
   isLocal: boolean
   mode: 'temperature' | 'operation'
-  setIsDarkMode: Dispatch<SetStateAction<boolean>>
+  toggleDakMode: () => void
   setIsLocal: Dispatch<SetStateAction<boolean>>
   onToggleMode: () => void
 }
 
-export function OperationCalculator({ mode, onToggleMode }: Props) {
+export function OperationCalculator({
+  mode,
+  onToggleMode,
+  toggleDakMode,
+  isDarkMode,
+}: Props) {
   const {
     getHistory,
     updateValues,
@@ -44,6 +49,8 @@ export function OperationCalculator({ mode, onToggleMode }: Props) {
           onClickResult={calculateResult}
           mode={mode}
           onToggleMode={onToggleMode}
+          toggleDakMode={toggleDakMode}
+          isDarkMode={isDarkMode}
         />
       </CalculatorKeypad>
     </div>

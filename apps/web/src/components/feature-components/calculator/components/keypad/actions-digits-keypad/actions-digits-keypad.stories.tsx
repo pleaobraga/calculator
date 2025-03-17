@@ -12,6 +12,8 @@ const meta = {
   args: {
     mode: 'temperature',
     onToggleMode: () => {},
+    isDarkMode: true,
+    toggleDakMode: () => {},
   },
 } satisfies Meta<typeof ActionsDigitsKeypad>
 
