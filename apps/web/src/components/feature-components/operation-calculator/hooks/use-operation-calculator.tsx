@@ -30,6 +30,10 @@ export function useOperationCalculator({ isLocal = true }: Props) {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (Number(e.key) <= 9) {
+        updateValues(e.key)
+      }
+
       if (e.key === 'Escape') {
         onClear()
       }
@@ -111,7 +115,7 @@ export function useOperationCalculator({ isLocal = true }: Props) {
     }
   }
 
-  function updateValues(digit: string) {
+  const updateValues = (digit: string) => {
     if (!digit) return
 
     let currentValue = String(values[currentIndexValue])

@@ -1,8 +1,8 @@
 import { FaDivide, FaMinus, FaPlus, FaXmark } from 'react-icons/fa6'
 
-import { EqualButton } from '../../button/equal-button'
-import { CalculatorButton } from '../../button/calculator-button'
 import { Operator } from '@/types/index'
+import { CalculatorButton } from '@/components/feature-components/calculator/components/button/calculator-button'
+import { EqualButton } from '@/components/feature-components/calculator/components/button/equal-button'
 
 type Props = {
   onClickOperator: (operator: Operator) => void

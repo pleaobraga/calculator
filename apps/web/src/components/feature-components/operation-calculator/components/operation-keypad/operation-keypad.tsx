@@ -1,30 +1,39 @@
 import { twMerge } from 'tailwind-merge'
 
-import { ActionsDigitsKeypad } from '../actions-digits-keypad'
-import { NumberDigitsKeypad } from '../number-digits-keypad'
+
+import { OperationDigitsKeypad } from '../operation-digits-keypad'
+import { Operator } from '@/types/index'
+import { ActionsDigitsKeypad } from '@/components/feature-components/calculator/components/keypad/actions-digits-keypad'
+import { NumberDigitsKeypad } from '@/components/feature-components/calculator/components/keypad/number-digits-keypad'
 
 type Props = {
   onClickNumberKeys: (digit: string) => void
   onDeleteDigit: () => void
+  onClickOperator: (operator: Operator) => void
+  onClickResult: () => void
   onClear: () => void
-  mode: 'temperature' | 'operation'
   onToggleMode: () => void
   toggleDakMode: () => void
   onToggleLocal: () => void
+  mode: 'temperature' | 'operation'
   isDarkMode: boolean
-  isLocal: boolean
+  isLocal?: boolean
+  isLoading?: boolean
 }
 
-export function TemperatureKeypad({
+export function OperationKeypad({
   onClickNumberKeys,
   onDeleteDigit,
+  onClickOperator,
+  onClickResult,
   onClear,
   onToggleMode,
   toggleDakMode,
   onToggleLocal,
   isDarkMode,
-  isLocal,
+  isLocal = true,
   mode = 'operation',
+  isLoading = false,
 }: Props) {
   return (
     <div className={twMerge('w-full h-full grid gap-4')}>
@@ -43,6 +52,13 @@ export function TemperatureKeypad({
           onClear={onClear}
           onClickNumberKeys={onClickNumberKeys}
           onDeleteDigit={onDeleteDigit}
+        />
+      </div>
+      <div className="row-start-1 row-end-5 col-start-3 col-end-3">
+        <OperationDigitsKeypad
+          onClickOperator={onClickOperator}
+          onClickResult={onClickResult}
+          isLoading={isLoading}
         />
       </div>
     </div>

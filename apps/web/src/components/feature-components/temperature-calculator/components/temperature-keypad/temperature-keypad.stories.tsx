@@ -14,6 +14,11 @@ const meta = {
     onClickNumberKeys: () => {},
     onDeleteDigit: () => {},
     onClear: () => {},
+    isDarkMode: false,
+    isLocal: true,
+    onToggleLocal: () => {},
+    onToggleMode: () => {},
+    toggleDakMode: () => {},
   },
 } satisfies Meta<typeof TemperatureKeypad>
 

@@ -9,16 +9,18 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof TemperatureVisor>
-
-export default meta
-type Story = StoryObj<typeof meta>
-
-export const Default: Story = {
   args: {
     onChangeFrom: () => {},
     onChangeTo: () => {},
     value: 10,
     response: 32,
+    defaultValueFrom: 'celsius',
+    defaultValueTo: 'celsius',
+    isFetching: false,
   },
-}
+} satisfies Meta<typeof TemperatureVisor>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {}

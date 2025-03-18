@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TemperatureCalculator } from '.'
+import { OperationCalculator } from '.'
 
 const meta = {
-  title: 'Calculator/Temperature Calculator',
-  component: TemperatureCalculator,
+  title: 'Calculator/Operation Calculator',
+  component: OperationCalculator,
   parameters: {
     layout: 'centered',
   },
@@ -13,11 +13,11 @@ const meta = {
     isDarkMode: false,
     isLocal: true,
     mode: 'operation',
-    setIsDarkMode: () => {},
-    setIsLocal: () => {},
-    setMode: () => {},
+    onToggleLocal: () => {},
+    onToggleMode: () => {},
+    toggleDakMode: () => {},
   },
-} satisfies Meta<typeof TemperatureCalculator>
+} satisfies Meta<typeof OperationCalculator>
 
 export default meta
 type Story = StoryObj<typeof meta>

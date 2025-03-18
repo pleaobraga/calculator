@@ -1,10 +1,9 @@
 'use client'
 
-import { Dispatch, SetStateAction } from 'react'
-import { CalculatorKeypad } from '../../components/keypad/calculator-keypad'
-import { OperationKeypad } from '../../components/keypad/operation-keypad'
-import { CalculatorVisor } from '../../components/visor/calculator-visor'
-import { OperationVisor } from '../../components/visor/operation-visor'
+import { CalculatorKeypad } from '../calculator/components/keypad/calculator-keypad'
+import { CalculatorVisor } from '../calculator/components/visor/calculator-visor'
+import { OperationVisor } from '../calculator/components/visor/operation-visor'
+import { OperationKeypad } from './components/operation-keypad'
 import { useOperationCalculator } from './hooks/use-operation-calculator'
 
 type Props = {

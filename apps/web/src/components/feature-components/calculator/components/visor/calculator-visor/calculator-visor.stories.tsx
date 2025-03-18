@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { CalculatorVisor } from '.'
 import { OperationVisor } from '../operation-visor'
-import { TemperatureVisor } from '../temperature-visor'
+import { TemperatureVisor } from '@/components/feature-components/temperature-calculator/components/temperature-visor'
 
 const meta = {
   title: 'Visor/Calculator Visor',
@@ -29,7 +29,7 @@ export const WithOperationVisor: Story = {
   render: () => (
     <CalculatorVisor>
       <OperationVisor
-        result="124"
+        value="124"
         history="12*12"
       />
     </CalculatorVisor>
@@ -44,6 +44,9 @@ export const WithTemperatureVisor: Story = {
         onChangeTo={() => {}}
         value={12}
         response={34}
+        defaultValueFrom="celsius"
+        defaultValueTo="celsius"
+        isFetching={false}
       />
     </CalculatorVisor>
   ),

@@ -12,6 +12,7 @@ const meta = {
   args: {
     onClickOperator: () => {},
     onClickResult: () => {},
+    isLoading: false,
   },
 } satisfies Meta<typeof OperationDigitsKeypad>
 

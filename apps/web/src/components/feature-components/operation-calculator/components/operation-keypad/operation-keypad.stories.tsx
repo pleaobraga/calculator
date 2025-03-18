@@ -17,6 +17,11 @@ const meta = {
     onClickResult: () => {},
     onClear: () => {},
     onToggleMode: () => {},
+    isDarkMode: false,
+    isLoading: false,
+    isLocal: true,
+    onToggleLocal: () => {},
+    toggleDakMode: () => {},
   },
 } satisfies Meta<typeof OperationKeypad>
 

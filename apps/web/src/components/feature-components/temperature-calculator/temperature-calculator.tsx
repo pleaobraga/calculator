@@ -1,9 +1,10 @@
 'use client'
 
-import { CalculatorKeypad } from '../keypad/calculator-keypad'
-import { CalculatorVisor } from '../visor/calculator-visor'
-import { TemperatureVisor } from '../visor/temperature-visor'
-import { TemperatureKeypad } from '../keypad/temperature-keypad'
+
+import { CalculatorKeypad } from '../calculator/components/keypad/calculator-keypad'
+import { CalculatorVisor } from '../calculator/components/visor/calculator-visor'
+import { TemperatureKeypad } from './components/temperature-keypad'
+import { TemperatureVisor } from './components/temperature-visor'
 import { useTemperatureCalculator } from './hooks/use-temperature-calculator'
 
 type Props = {

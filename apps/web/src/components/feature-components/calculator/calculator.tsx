@@ -1,8 +1,8 @@
 'use client'
 
 import { UseCalculator } from './use-calculator'
-import { OperationCalculator } from './components/operation-calculator'
-import { TemperatureCalculator } from './components/temperature-calculator'
+import { OperationCalculator } from '../operation-calculator'
+import { TemperatureCalculator } from '../temperature-calculator'
 
 export function Calculator() {
   const {
